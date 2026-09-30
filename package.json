@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "npx --yes serve . -l 5173",
-    "test": "node tests/calc.test.js"
+    "test": "node calc.test.js"
   },
-  "license": "MIT"
+  "author": "Yashraj Tokas",
+  "license": "UNLICENSED"
 }

@@ -1,12 +1,12 @@
 /*
  * ClearLedger — calculation tests
- * Run with:  node tests/calc.test.js   (or: npm test)
+ * Run with:  node calc.test.js   (or: npm test)
  * No dependencies; uses Node's built-in assert module.
  */
 'use strict';
 
 const assert = require('assert');
-const calc = require('../js/calc.js');
+const calc = require('./calc.js');
 
 let passed = 0;
 function test(name, fn) {

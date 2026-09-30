@@ -52,7 +52,7 @@ npm start          # serves the folder at http://localhost:5173
 **Run the tests**
 
 ```bash
-npm test           # or: node tests/calc.test.js
+npm test           # or: node calc.test.js
 ```
 
 The tests check the EMI formula against a known value, that money is conserved in every simulation, that the winner flips in the expected direction, and that the break-even point is where the maths says it should be.
@@ -61,12 +61,12 @@ The tests check the EMI formula against a known value, that money is conserved i
 
 ```
 clearledger/
-├── index.html          Page structure and the static "How this works" copy
-├── css/styles.css      Design tokens (light + dark), layout, components
-├── js/calc.js          Pure calculation engine: no DOM, runs in browser and Node
-├── js/app.js           State, validation, formatting and rendering
-├── tests/calc.test.js  Dependency-free tests for calc.js
-└── package.json        `npm start` and `npm test`
+├── index.html      Page structure and the static "How this works" copy
+├── styles.css      Design tokens (light + dark), layout, components
+├── calc.js         Pure calculation engine: no DOM, runs in browser and Node
+├── app.js          State, validation, formatting and rendering
+├── calc.test.js    Dependency-free tests for calc.js
+└── package.json    `npm start` and `npm test`
 ```
 
 The split is deliberate: **`calc.js` is the only place maths happens.** The interface asks it for numbers and draws them. The same file is loaded by the page and by the tests, so the tested code is the shipped code.
@@ -124,3 +124,5 @@ Scenarios are described as **data** in `app.js` (fields, limits, example values,
 ---
 
 Built with plain HTML, CSS and JavaScript. No frameworks, no tracking, no data leaves the browser.
+
+**Author:** Yashraj Tokas · © 2026 Yashraj Tokas. All rights reserved. You may view and run this project to evaluate it; please ask before reusing the code or design.
