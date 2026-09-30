@@ -1,0 +1,11 @@
+{
+  "name": "clearledger",
+  "version": "1.0.0",
+  "description": "A one-page financial decision dashboard that compares everyday money choices with transparent, educational estimates.",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve . -l 5173",
+    "test": "node tests/calc.test.js"
+  },
+  "license": "MIT"
+}

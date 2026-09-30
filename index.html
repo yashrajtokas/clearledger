@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ClearLedger</title>
+<meta name="description" content="Compare two everyday money choices and see the real cost, with clear charts, plain-language explanations and every assumption in the open. Educational estimates, not financial advice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#workspace">Skip to the calculator</a>
+
+<div class="page">
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect x="3" y="4" width="26" height="24" rx="3" class="bm-sheet"></rect>
+        <line x1="9" y1="4" x2="9" y2="28" class="bm-margin"></line>
+        <line x1="11" y1="4" x2="11" y2="28" class="bm-margin"></line>
+        <line x1="14" y1="12" x2="25" y2="12" class="bm-rule"></line>
+        <line x1="14" y1="17" x2="25" y2="17" class="bm-rule"></line>
+        <line x1="14" y1="22" x2="25" y2="22" class="bm-rule-strong"></line>
+      </svg>
+      <span class="brand-name">ClearLedger</span>
+    </div>
+    <div class="masthead-tools">
+      <label class="currency-picker" for="currency">
+        <span class="visually-hidden">Currency</span>
+        <select id="currency" aria-describedby="currency-note"></select>
+      </label>
+      <span id="currency-note" class="visually-hidden">Changes the currency symbol only. Amounts are not converted.</span>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">See what a money choice really costs before you make it.</h1>
+      <p class="lede">Pick a decision, enter a few numbers, and ClearLedger plays both options forward month by month. You get the difference in plain words, the chart behind it, and every assumption laid out.</p>
+    </div>
+    <p class="stamp" role="note">Educational estimate<span aria-hidden="true"> · </span><br class="stamp-break">Not financial advice</p>
+  </section>
+
+  <!-- Scenario switch -->
+  <nav class="scenario-switch" aria-label="Choose a decision">
+    <div role="tablist" id="scenario-tabs" aria-label="Decision to compare"></div>
+  </nav>
+
+  <!-- Workspace: entries on the left, the balance on the right -->
+  <main id="workspace" class="workspace" tabindex="-1">
+
+    <section class="entries" aria-labelledby="entries-title">
+      <div class="panel-head">
+        <h2 id="entries-title">Your numbers</h2>
+        <div class="panel-actions">
+          <button type="button" class="btn btn-quiet" id="load-example">Load example</button>
+          <button type="button" class="btn btn-quiet" id="clear-all">Clear</button>
+        </div>
+      </div>
+      <p class="scenario-intro" id="scenario-intro"></p>
+      <form id="inputs-form" novalidate autocomplete="off"></form>
+      <p class="example-note" id="example-note">These are example numbers for a typical case. Replace them with yours.</p>
+    </section>
+
+    <section class="balance" aria-labelledby="results-title">
+      <h2 id="results-title" class="visually-hidden">Result</h2>
+      <div id="results" aria-live="polite"></div>
+    </section>
+
+  </main>
+
+  <!-- What could change this result -->
+  <section class="sheet whatif" id="what-if" aria-labelledby="whatif-title">
+    <div class="sheet-head">
+      <h2 id="whatif-title">What could change this result?</h2>
+      <p class="sheet-lede">Real life rarely matches the plan. Move a lever to see how the outcome shifts. The numbers above update too.</p>
+    </div>
+    <div id="whatif-body"></div>
+  </section>
+
+  <!-- Assumptions -->
+  <section class="sheet" id="assumptions" aria-labelledby="assumptions-title">
+    <div class="sheet-head">
+      <h2 id="assumptions-title">The assumptions behind this result</h2>
+      <p class="sheet-lede">Every estimate rests on simplifications. Here are the ones this comparison uses, with your numbers filled in.</p>
+    </div>
+    <div id="assumptions-body"></div>
+  </section>
+
+  <!-- How this works -->
+  <section class="sheet how" id="how" aria-labelledby="how-title">
+    <div class="sheet-head">
+      <h2 id="how-title">How this works</h2>
+      <p class="sheet-lede">No black box. This is the whole method, in everyday language.</p>
+    </div>
+    <div class="how-grid">
+      <article class="how-item">
+        <h3>It plays out both options month by month</h3>
+        <p>Instead of one big formula, ClearLedger walks through every month. Each month, interest is added to anything you owe and to anything you have saved, and then that month's money moves according to the option. Doing it step by step means the numbers you see in the table are exactly the numbers behind the chart.</p>
+      </article>
+      <article class="how-item">
+        <h3>Yearly rates become monthly rates</h3>
+        <p>A 36% yearly rate is charged as 3% a month (36 ÷ 12). Savings work the same way. If you enter a tax rate, the savings rate is reduced by that share first: 7% with 20% tax becomes 5.6% a year.</p>
+        <p class="formula"><span>monthly rate</span> = <span>yearly rate ÷ 12</span></p>
+      </article>
+      <article class="how-item">
+        <h3>Debt first or savings first</h3>
+        <p>Both options spend the same money each month. <strong>Debt first</strong> sends all of it to the debt until it is gone, then everything goes to savings. <strong>Save first</strong> pays only the minimum and saves the rest. We compare your <em>net position</em>: what you have saved minus what you still owe.</p>
+      </article>
+      <article class="how-item">
+        <h3>Pay in full or pay in instalments</h3>
+        <p>Both options start with the item's price set aside. <strong>Pay in full</strong> spends it today, minus any discount. <strong>Instalments</strong> pay a fee today and a fixed amount each month, while the rest keeps earning interest. The fixed monthly amount uses the standard loan formula that banks use for an EMI:</p>
+        <p class="formula"><span>EMI</span> = <span>P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</span></p>
+        <p class="formula-key">P is the price, r the monthly rate, n the number of months.</p>
+      </article>
+      <article class="how-item">
+        <h3>Finding the tipping point</h3>
+        <p>To find where the winner changes, ClearLedger tries a value halfway through a range, checks which option wins, and keeps halving the range towards the switch. It is the same idea as guessing a number between 1 and 100 by always asking "higher or lower?". Sixty rounds of this pin the tipping point down precisely.</p>
+      </article>
+      <article class="how-item">
+        <h3>What it leaves out</h3>
+        <p>Rates that change, late fees, inflation, emergencies, credit score effects, and the peace of mind of having cash on hand are not modelled. That is why the result is an estimate for learning, not a recommendation. For a real decision, talk to a qualified adviser.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p><strong>ClearLedger</strong> is an educational tool. It shows estimates based on the numbers you enter and the simplifications listed above. It is not financial, tax or legal advice. Nothing you type leaves your browser.</p>
+  </footer>
+</div>
+
+<!-- Scripts: pure calculations first, then the interface that uses them -->
+<script src="js/calc.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
